@@ -35,7 +35,7 @@ const search = () =>{
       noOfGuests,
     },
   });
-  setSearchInput("");
+  // setSearchInput("");
 }
   //function resetInput() {} -> alternative syntax for function resetInput
   const resetInput = () => {
