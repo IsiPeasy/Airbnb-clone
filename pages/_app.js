@@ -11,6 +11,7 @@ const progress = new ProgressBar({
 });
 
 Router.events.on('routeChangeStart', progress.start);
+Router.events.on("routeChangeComplete", progress.finish);
 //starting page of application
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />
