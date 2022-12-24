@@ -35,7 +35,7 @@ const search = () =>{
       noOfGuests,
     },
   });
-  // setSearchInput("");
+   setSearchInput("");
 }
   //function resetInput() {} -> alternative syntax for function resetInput
   const resetInput = () => {
@@ -64,6 +64,7 @@ const search = () =>{
           layout="fill"
           objectFit="contain"
           objectPosition="left"
+          priority="primary"
         />
       </div>
 
@@ -95,7 +96,7 @@ const search = () =>{
         className="flex space-x-4 items-center 
       justify-end text-gray-500"
       >
-        <p className="hidden md:inline cursor-pointer">Become a member</p>
+        <p className="sm:pl-4 hidden md:inline cursor-pointer">Become a member</p>
         <GlobeAltIcon className="h-6 cursor-pointer" />
 
         <div

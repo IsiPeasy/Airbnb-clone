@@ -2,8 +2,9 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
+import InfoCard from "../components/InfoCard";
 
-function Search() {
+function Search({ searchResults }) {
   const router = useRouter();
 
   console.log(searchResults);
@@ -12,7 +13,6 @@ function Search() {
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
 
   const range = `${formattedStartDate} - ${formattedEndDate}`;
-
   return (
     <div>
       <Header placeholder={`${location} | ${range} | ${noOfGuests} guests`} />
@@ -37,6 +37,23 @@ function Search() {
             <p className="button">Rooms and Beds</p>
             <p className="button">More filters</p>
           </div>
+
+          <div className="flex flex-col">
+            {searchResults.map(
+              ({ img, location, title, description, star, price, total }) => (
+                <InfoCard
+                  key={img}
+                  img={img}
+                  location={location}
+                  description={description}
+                  title={title}
+                  price={price}
+                  star={star}
+                  total={total}
+                />
+              )
+            )}
+          </div>
         </section>
       </main>
 
@@ -48,14 +65,14 @@ function Search() {
 export default Search;
 
 export async function getServerSideProps() {
-  //fetch data from api
-  const searchResults = await (
-    await fetch("https://www.jsonkeeper.com/b/5NPS")).
-    then((res) => res.json());
+  // fetch data from api
+  const searchResults = await fetch("https://www.jsonkeeper.com/b/5NPS").then(
+    (res) => res.json()
+  );
 
   return {
     props: {
-      searchResults, //Shorcut if the prof has the same name
+      searchResults, //Shorcut:if the prof has the same name
     },
   };
 }
