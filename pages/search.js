@@ -49,7 +49,7 @@ function Search({ searchResults }) {
                   title={title}
                   price={price}
                   star={star}
-                  total={total}
+                  total={total} 
                 />
               )
             )}
@@ -72,7 +72,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      searchResults, //Shorcut:if the prof has the same name
+      searchResults, //Shorcut: if the prof has the same name
     },
   };
 }
