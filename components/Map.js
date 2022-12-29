@@ -52,10 +52,10 @@ function Map({ searchResults }) {
           {/* {popup shown if we it's clicked on a Marker} */}
           {selectedLocation.long === res.long ? (
             <Popup
+            onClose={() => setSelectedLocation({})}
             closeOnClick={true}
             latitude={res.lat}
             longitude={res.long}
-            onClose={() => setSelectedLocation({})}
             >
               {res.title}
             </Popup>
