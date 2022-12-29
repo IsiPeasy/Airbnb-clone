@@ -3,11 +3,11 @@ import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
 import InfoCard from "../components/InfoCard";
+import Map from "../components/Map";
 
 function Search({ searchResults }) {
   const router = useRouter();
 
-  console.log(searchResults);
   const { location, startDate, endDate, noOfGuests } = router.query;
   const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
@@ -49,11 +49,15 @@ function Search({ searchResults }) {
                   title={title}
                   price={price}
                   star={star}
-                  total={total} 
+                  total={total}
                 />
               )
             )}
           </div>
+        </section>
+        {/*  hidden*/}
+        <section className="hidden sm:inline-flex xl:min-w-[600px]">
+          <Map searchResults={searchResults} />
         </section>
       </main>
 
